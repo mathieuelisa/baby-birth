@@ -2,7 +2,12 @@
 
 import { useAtomValue } from "jotai";
 import Link from "next/link";
-import { useClaimProduct, useProducts, useUnclaimProduct } from "@/hooks/use-products";
+import Image from "next/image";
+import {
+  useClaimProduct,
+  useProducts,
+  useUnclaimProduct,
+} from "@/hooks/use-products";
 import { userAtom } from "@/store/auth";
 import type { Product } from "@/types";
 import { cn } from "@/lib/utils";
@@ -15,55 +20,110 @@ export default function ListeNaissancePage() {
 
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center py-20">
-        <p className="text-muted-foreground text-sm">Chargement de la liste…</p>
-      </div>
+      <main className='relative min-h-screen overflow-hidden'>
+        <div className='relative z-10 flex min-h-screen items-center justify-center px-4'>
+          <div className='rounded-2xl bg-background/80 px-6 py-4 shadow-xl backdrop-blur-md'>
+            <p className='text-sm text-muted-foreground'>
+              Chargement de la liste…
+            </p>
+          </div>
+        </div>
+      </main>
     );
   }
 
   if (isError) {
     return (
-      <p className="text-center text-destructive py-20">
-        Impossible de charger la liste. Veuillez réessayer.
-      </p>
+      <main className='relative min-h-screen overflow-hidden'>
+        <WallpaperBackground />
+        <div className='relative z-10 flex min-h-screen items-center justify-center px-4'>
+          <p className='rounded-2xl bg-background/80 px-6 py-4 text-center text-destructive shadow-xl backdrop-blur-md'>
+            Impossible de charger la liste. Veuillez réessayer.
+          </p>
+        </div>
+      </main>
     );
   }
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-2xl font-semibold text-foreground">Liste de naissance 🎁</h1>
-        <p className="mt-1 text-sm text-muted-foreground">
-          Cliquez sur &laquo;&nbsp;Réserver&nbsp;&raquo; pour prendre en charge un cadeau.
-          Un cadeau barré est déjà réservé.
-        </p>
+    <main className='relative min-h-screen overflow-hidden'>
+      {/* <WallpaperBackground /> */}
+
+      <div className='relative z-10 px-4 py-10'>
+        <div className='mx-auto max-w-7xl space-y-6'>
+          <div className='rounded-2xl bg-background/80 p-6 shadow-xl backdrop-blur-md'>
+            <h1 className='text-2xl font-semibold text-foreground'>
+              Liste de naissance 🎁
+            </h1>
+            <p className='mt-1 text-sm text-muted-foreground'>
+              Cliquez sur &laquo;&nbsp;Réserver&nbsp;&raquo; pour prendre en
+              charge un cadeau. Un cadeau barré est déjà réservé.
+            </p>
+          </div>
+
+          {(claim.isError || unclaim.isError) && (
+            <p className='rounded-2xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive shadow-md backdrop-blur-md'>
+              Une erreur s&apos;est produite. Vérifiez que la base de données
+              est bien configurée.
+            </p>
+          )}
+
+          <div className='grid items-stretch gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+            {products?.map((product) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                currentUserId={user!.id}
+                isClaiming={
+                  claim.isPending && claim.variables?.productId === product.id
+                }
+                isUnclaiming={
+                  unclaim.isPending &&
+                  unclaim.variables?.productId === product.id
+                }
+                onClaim={() =>
+                  claim.mutate({ productId: product.id, userId: user!.id })
+                }
+                onUnclaim={() =>
+                  unclaim.mutate({ productId: product.id, userId: user!.id })
+                }
+              />
+            ))}
+          </div>
+
+          {products?.length === 0 && (
+            <p className='rounded-2xl bg-background/80 px-6 py-4 text-center text-muted-foreground shadow-xl backdrop-blur-md'>
+              Aucun produit dans la liste pour l&apos;instant.
+            </p>
+          )}
+        </div>
+      </div>
+    </main>
+  );
+}
+
+function WallpaperBackground() {
+  return (
+    <div className='absolute inset-0'>
+      <Image
+        src='/assets/images/wallpaper.jpg'
+        alt='wallpaper'
+        fill
+        priority
+        className='object-cover'
+      />
+
+      <div className='absolute inset-0'>
+        <Image
+          src='/assets/images/wallpaper.jpg'
+          alt='wallpaper duplicate'
+          fill
+          priority
+          className='object-cover scale-110 blur-sm'
+        />
       </div>
 
-      {(claim.isError || unclaim.isError) && (
-        <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-4 py-2.5 text-sm text-destructive">
-          Une erreur s&apos;est produite. Vérifiez que la base de données est bien configurée.
-        </p>
-      )}
-
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {products?.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            currentUserId={user!.id}
-            isClaiming={claim.isPending && claim.variables?.productId === product.id}
-            isUnclaiming={unclaim.isPending && unclaim.variables?.productId === product.id}
-            onClaim={() => claim.mutate({ productId: product.id, userId: user!.id })}
-            onUnclaim={() => unclaim.mutate({ productId: product.id, userId: user!.id })}
-          />
-        ))}
-      </div>
-
-      {products?.length === 0 && (
-        <p className="text-center text-muted-foreground py-20">
-          Aucun produit dans la liste pour l&apos;instant.
-        </p>
-      )}
+      <div className='absolute inset-0 bg-black/45' />
     </div>
   );
 }
@@ -90,27 +150,29 @@ function ProductCard({
   return (
     <div
       className={cn(
-        "flex flex-col rounded-2xl border bg-card shadow-sm overflow-hidden transition-all",
-        isClaimed && !isClaimedByMe ? "opacity-70" : "hover:shadow-md",
+        "flex h-full min-h-[460px] flex-col overflow-hidden rounded-2xl border border-white/20 bg-background/80 shadow-xl backdrop-blur-md transition-all",
+        isClaimed && !isClaimedByMe ? "opacity-70" : "hover:shadow-2xl",
       )}
     >
-      {/* Image */}
-      <div className="relative aspect-[4/3] bg-secondary flex items-center justify-center">
+      <div className='relative flex h-56 w-full shrink-0 items-center justify-center bg-secondary'>
         {product.image_url ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={product.image_url}
             alt={product.title}
-            className={cn("h-full w-full object-cover", isClaimed && "opacity-60")}
+            className={cn(
+              "h-full w-full object-cover",
+              isClaimed && "opacity-60",
+            )}
           />
         ) : (
-          <span className="text-4xl opacity-40">🎀</span>
+          <span className='text-4xl opacity-40'>🎀</span>
         )}
 
         {isClaimed && (
           <div
             className={cn(
-              "absolute top-2 right-2 rounded-full px-2.5 py-1 text-xs font-medium",
+              "absolute right-2 top-2 rounded-full px-2.5 py-1 text-xs font-medium",
               isClaimedByMe
                 ? "bg-primary text-primary-foreground"
                 : "bg-foreground/80 text-background",
@@ -121,30 +183,37 @@ function ProductCard({
         )}
       </div>
 
-      {/* Content */}
-      <div className="flex flex-col gap-3 p-4 flex-1">
-        <h3
-          className={cn(
-            "font-medium text-foreground leading-snug",
-            isClaimed && !isClaimedByMe && "line-through text-muted-foreground",
+      <div className='flex flex-1 flex-col p-4'>
+        <div className='min-h-[48px]'>
+          <h3
+            className={cn(
+              "line-clamp-2 font-medium leading-snug text-foreground",
+              isClaimed &&
+                !isClaimedByMe &&
+                "line-through text-muted-foreground",
+            )}
+          >
+            {product.title}
+          </h3>
+        </div>
+
+        <div className='mt-1 min-h-[20px]'>
+          {isClaimed && claimer && !isClaimedByMe && (
+            <p className='text-xs text-muted-foreground'>
+              Réservé par {claimer.first_name} {claimer.last_name}
+            </p>
           )}
-        >
-          {product.title}
-        </h3>
+        </div>
 
-        {isClaimed && claimer && !isClaimedByMe && (
-          <p className="text-xs text-muted-foreground">
-            Réservé par {claimer.first_name} {claimer.last_name}
-          </p>
-        )}
+        <div className='flex-1' />
 
-        <div className="mt-auto flex items-center gap-2">
+        <div className='flex items-center gap-2'>
           {product.link && (
             <Link
               href={product.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex-1 rounded-lg border border-border px-3 py-2 text-center text-xs text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
+              target='_blank'
+              rel='noopener noreferrer'
+              className='flex-1 rounded-lg border border-border px-3 py-2 text-center text-xs text-muted-foreground transition-colors hover:border-foreground hover:text-foreground'
             >
               Voir le produit ↗
             </Link>
@@ -154,7 +223,7 @@ function ProductCard({
             <button
               onClick={onClaim}
               disabled={isClaiming}
-              className="flex-1 rounded-lg bg-primary px-3 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 disabled:opacity-50 transition-opacity"
+              className='flex-1 rounded-lg bg-primary px-3 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50'
             >
               {isClaiming ? "…" : "Réserver"}
             </button>
@@ -164,7 +233,7 @@ function ProductCard({
             <button
               onClick={onUnclaim}
               disabled={isUnclaiming}
-              className="flex-1 rounded-lg border border-destructive px-3 py-2 text-xs font-medium text-destructive hover:bg-destructive hover:text-destructive-foreground disabled:opacity-50 transition-colors"
+              className='flex-1 rounded-lg border border-destructive px-3 py-2 text-xs font-medium text-destructive transition-colors hover:bg-destructive hover:text-destructive-foreground disabled:opacity-50'
             >
               {isUnclaiming ? "…" : "Annuler"}
             </button>
