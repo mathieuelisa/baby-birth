@@ -40,7 +40,7 @@ export async function getProducts(): Promise<Product[]> {
 
   const { data, error } = await supabase
     .from("products")
-    .select("*, product_claims(*, users(*))")
+    .select("*, claimer:users!claimed_by_user_id(id, first_name, last_name)")
     .order("created_at");
 
   if (error) throw error;
@@ -51,8 +51,10 @@ export async function claimProduct(productId: string, userId: string): Promise<v
   const supabase = createClient();
 
   const { error } = await supabase
-    .from("product_claims")
-    .insert({ product_id: productId, user_id: userId });
+    .from("products")
+    .update({ claimed_by_user_id: userId })
+    .eq("id", productId)
+    .is("claimed_by_user_id", null);
 
   if (error) throw error;
 }
@@ -61,10 +63,10 @@ export async function unclaimProduct(productId: string, userId: string): Promise
   const supabase = createClient();
 
   const { error } = await supabase
-    .from("product_claims")
-    .delete()
-    .eq("product_id", productId)
-    .eq("user_id", userId);
+    .from("products")
+    .update({ claimed_by_user_id: null })
+    .eq("id", productId)
+    .eq("claimed_by_user_id", userId);
 
   if (error) throw error;
 }

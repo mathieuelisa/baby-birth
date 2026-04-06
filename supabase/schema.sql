@@ -1,6 +1,6 @@
 -- ============================================================
 -- babyBirth — Schéma Supabase
--- À exécuter dans l'éditeur SQL de Supabase
+-- À exécuter dans l'éditeur SQL de Supabase (projet vierge)
 -- ============================================================
 
 -- Utilisateurs (auth sans mot de passe)
@@ -13,21 +13,14 @@ CREATE TABLE IF NOT EXISTS users (
 );
 
 -- Produits de la liste de naissance
+-- claimed_by_user_id : NULL = disponible, renseigné = réservé
 CREATE TABLE IF NOT EXISTS products (
   id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
   title TEXT NOT NULL,
   image_url TEXT,
   link TEXT,
+  claimed_by_user_id UUID REFERENCES users (id) ON DELETE SET NULL,
   created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Réservations (un produit = un seul utilisateur)
-CREATE TABLE IF NOT EXISTS product_claims (
-  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
-  product_id UUID NOT NULL REFERENCES products (id) ON DELETE CASCADE,
-  user_id UUID NOT NULL REFERENCES users (id) ON DELETE CASCADE,
-  claimed_at TIMESTAMPTZ DEFAULT NOW(),
-  UNIQUE (product_id)
 );
 
 -- Questions du jeu de pronostics
@@ -56,13 +49,11 @@ CREATE TABLE IF NOT EXISTS pronostic_answers (
 
 ALTER TABLE users ENABLE ROW LEVEL SECURITY;
 ALTER TABLE products ENABLE ROW LEVEL SECURITY;
-ALTER TABLE product_claims ENABLE ROW LEVEL SECURITY;
 ALTER TABLE pronostic_questions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE pronostic_answers ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "public_users" ON users FOR ALL TO anon USING (true) WITH CHECK (true);
 CREATE POLICY "public_products" ON products FOR ALL TO anon USING (true) WITH CHECK (true);
-CREATE POLICY "public_product_claims" ON product_claims FOR ALL TO anon USING (true) WITH CHECK (true);
 CREATE POLICY "public_pronostic_questions" ON pronostic_questions FOR ALL TO anon USING (true) WITH CHECK (true);
 CREATE POLICY "public_pronostic_answers" ON pronostic_answers FOR ALL TO anon USING (true) WITH CHECK (true);
 

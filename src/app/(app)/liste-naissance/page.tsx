@@ -15,7 +15,7 @@ export default function ListeNaissancePage() {
 
   if (isLoading) {
     return (
-      <div className="flex flex-col items-center justify-center py-20 gap-3">
+      <div className="flex items-center justify-center py-20">
         <p className="text-muted-foreground text-sm">Chargement de la liste…</p>
       </div>
     );
@@ -38,6 +38,12 @@ export default function ListeNaissancePage() {
           Un cadeau barré est déjà réservé.
         </p>
       </div>
+
+      {(claim.isError || unclaim.isError) && (
+        <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-4 py-2.5 text-sm text-destructive">
+          Une erreur s&apos;est produite. Vérifiez que la base de données est bien configurée.
+        </p>
+      )}
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {products?.map((product) => (
@@ -77,10 +83,9 @@ function ProductCard({
   onClaim: () => void;
   onUnclaim: () => void;
 }) {
-  const claim = product.product_claims?.[0];
-  const isClaimed = Boolean(claim);
-  const isClaimedByMe = claim?.user_id === currentUserId;
-  const claimer = claim?.users;
+  const isClaimed = product.claimed_by_user_id !== null;
+  const isClaimedByMe = product.claimed_by_user_id === currentUserId;
+  const claimer = product.claimer;
 
   return (
     <div
@@ -102,7 +107,6 @@ function ProductCard({
           <span className="text-4xl opacity-40">🎀</span>
         )}
 
-        {/* Badge réservé */}
         {isClaimed && (
           <div
             className={cn(

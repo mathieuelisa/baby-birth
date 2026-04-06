@@ -10,16 +10,9 @@ export type Product = {
   title: string;
   image_url: string | null;
   link: string | null;
+  claimed_by_user_id: string | null;
   created_at: string;
-  product_claims: ProductClaim[];
-};
-
-export type ProductClaim = {
-  id: string;
-  product_id: string;
-  user_id: string;
-  claimed_at: string;
-  users: User;
+  claimer: Pick<User, "id" | "first_name" | "last_name"> | null;
 };
 
 export type PronosticQuestion = {
