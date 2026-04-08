@@ -45,12 +45,12 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         <div className='mx-auto flex h-14 max-w-4xl items-center justify-between px-4'>
           <button
             onClick={() => router.push("/home")}
-            className='text-base font-semibold text-foreground transition-colors hover:text-primary'
+            className='text-xl font-semibold text-foreground text-[#a1968a] transition-colors hover:text-primary'
           >
-            🍼 babyBirth
+            🍼👶🏽 Mini nous
           </button>
 
-          <div className='flex items-center gap-3'>
+          <div className='flex items-center gap-2'>
             <span className='text-sm text-muted-foreground'>
               {user.first_name} {user.last_name}
             </span>
@@ -65,7 +65,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </header>
 
       {/* Content */}
-      <div className='relative z-10 mx-auto max-w-4xl px-4 py-8'>
+      <div className='relative z-10 mx-auto max-w-[1070px] px-6 py-16'>
         {children}
       </div>
     </div>

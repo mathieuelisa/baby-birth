@@ -29,7 +29,7 @@ export default function LoginPage() {
       {/* Background image */}
       <div className='absolute inset-0'>
         <Image
-          src='/assets/images/wallpaper.jpg'
+          src='/assets/images/wallpaper2.jpg'
           alt='wallpaper'
           fill
           priority
@@ -39,7 +39,7 @@ export default function LoginPage() {
         {/* Dupliquer visuellement le wallpaper avec un blur léger */}
         <div className='absolute inset-0'>
           <Image
-            src='/assets/images/wallpaper.jpg'
+            src='/assets/images/wallpaper2.jpg'
             alt='wallpaper duplicate'
             fill
             priority
@@ -55,10 +55,17 @@ export default function LoginPage() {
       <div className='relative z-10 flex min-h-screen items-center justify-center px-4'>
         <div className='w-full max-w-sm space-y-8 rounded-xs bg-background/80 p-6 shadow-xl backdrop-blur-md'>
           <div className='text-center'>
-            <p className='mb-3 text-5xl'>🍼</p>
-            <p className='mt-2 text-sm text-muted-foreground'>
-              Entrez votre prénom et nom pour accéder au site
+            <p className='mb-3 text-3xl text-muted-foreground'>
+              👶🏽 Mini nous 👶🏽
             </p>
+            <p className='mt- mb-6 text-sm text-muted-foreground'>
+              Entrez votre prénom et nom pour accéder site
+            </p>
+            <small>
+              ⚠️​ Vous devez utiliser votre prénom et votre nom{" "}
+              <span className='underline font-bold'>exacts</span> pour vous
+              connecter (respectez les majuscules et minuscules).
+            </small>
           </div>
 
           <form

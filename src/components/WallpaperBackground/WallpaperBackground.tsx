@@ -4,7 +4,7 @@ export default function WallpaperBackground() {
   return (
     <div className='absolute inset-0 -z-0'>
       <Image
-        src='/assets/images/wallpaper.jpg'
+        src='/assets/images/wallpaper2.jpg'
         alt='wallpaper'
         fill
         priority
@@ -13,7 +13,7 @@ export default function WallpaperBackground() {
 
       <div className='absolute inset-0'>
         <Image
-          src='/assets/images/wallpaper.jpg'
+          src='/assets/images/wallpaper2.jpg'
           alt='wallpaper duplicate'
           fill
           priority
