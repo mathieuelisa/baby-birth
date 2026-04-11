@@ -55,7 +55,7 @@ export default function LoginPage() {
       <div className='relative z-10 flex min-h-screen items-center justify-center px-4'>
         <div className='w-full max-w-sm space-y-8 rounded-xs bg-background/80 p-6 shadow-xl backdrop-blur-md'>
           <div className='text-center'>
-            <p className='mb-3 text-3xl text-muted-foreground font-grayson'>
+            <p className='mb-3 text-3xl text-muted-foreground'>
               👶🏽 Mini nous 👶🏽
             </p>
             <p className='mt- mb-6 text-sm text-muted-foreground'>

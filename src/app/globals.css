@@ -75,3 +75,7 @@
     @apply bg-background text-foreground antialiased;
   }
 }
+
+@theme {
+  --font-grayson: "Grayson", sans-serif;
+}
