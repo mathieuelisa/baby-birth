@@ -77,7 +77,7 @@ export default function PronosticsPage() {
 
   return (
     <div className='space-y-6'>
-      <div>
+      <div className='pt-10'>
         <div className='group flex items-center gap-1'>
           <TiArrowLeft className='text-white group-hover:text-[#926744]' />
           <Link
@@ -88,11 +88,11 @@ export default function PronosticsPage() {
           </Link>
         </div>
 
-        <h1 className='text-foreground text-center text-4xl font-semibold text-white'>
+        <h1 className='text-foreground text-center text-4xl font-semibold text-white mt-8'>
           Ton pronostic 🔮
         </h1>
 
-        <p className='mt-10 whitespace-pre-line text-justify text-base text-white md:text-center'>
+        <p className='mt-10 whitespace-pre-line text-center text-base text-white md:text-center'>
           {hasExistingAnswers
             ? "Vous avez déjà soumis vos pronostics. Vous pouvez les modifier ci-dessous."
             : "Tente de deviner les caractéristiques du bébé !\n\nChaque participant peut proposer ses prédictions (poids, taille, date de naissance, etc.).\n\nLes réponses seront soigneusement comparées à la naissance du bébé afin d’attribuer les points.\nUne bonne réponse rapporte 1 point, tandis qu’une mauvaise réponse n’en rapporte aucun.\n\nLa personne ayant obtenu le plus grand nombre de points remportera un restaurant ! 🥘​"}

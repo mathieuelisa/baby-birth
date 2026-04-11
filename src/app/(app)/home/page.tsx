@@ -51,6 +51,7 @@ export default function HomePage() {
 
         <div className='grid gap-4 sm:grid-cols-2'>
           {/* Liste de naissance */}
+
           <button
             type='button'
             onClick={() => router.push("/liste-naissance")}
