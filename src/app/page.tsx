@@ -64,7 +64,11 @@ export default function LoginPage() {
             <small>
               ⚠️​ Vous devez utiliser votre prénom et votre nom{" "}
               <span className='underline font-bold'>exacts</span> pour vous
-              connecter (respectez les majuscules et minuscules).
+              connecter (
+              <span className='underline font-bold'>
+                respectez les majuscules et minuscules
+              </span>
+              )
             </small>
           </div>
 
@@ -146,9 +150,9 @@ export default function LoginPage() {
             <button
               type='submit'
               disabled={login.isPending}
-              className='w-full rounded-lg bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-sm transition-opacity hover:opacity-90 disabled:opacity-50'
+              className='w-full rounded-xs bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-sm transition-opacity hover:opacity-90 disabled:opacity-50'
             >
-              {login.isPending ? "Connexion…" : "Accéder au site"}
+              {login.isPending ? "Connexion…" : "Accéder à Mini nous"}
             </button>
           </form>
         </div>

@@ -3,7 +3,6 @@
 import { useAtomValue } from "jotai";
 import { useRouter } from "next/navigation";
 import { userAtom } from "@/store/auth";
-import Image from "next/image";
 
 export default function HomePage() {
   const user = useAtomValue(userAtom);
@@ -29,7 +28,7 @@ export default function HomePage() {
             <br /> En attendant qu'il/qu'elle pointe le bout de son nez, on vous
             propose de vous faire patienter chacun avec un peu d'amusement...
             <br />
-            <br /> A vos pronos pour les plus joueurs ! (un restau est à gagné
+            <br /> A vos pronos pour les plus joueurs ! (un resto est à gagner
             !)
             <br /> Et pour ceux qui nous l'ont demandé, la liste de naissance
             est aussi dispo.
@@ -51,6 +50,7 @@ export default function HomePage() {
         <div className='grid gap-4 sm:grid-cols-2'>
           {/* Liste de naissance */}
           <button
+            type='button'
             onClick={() => router.push("/liste-naissance")}
             className='group flex flex-col items-center gap-4 rounded-xs border border-border bg-card p-8 text-center shadow-sm transition-all hover:border-primary hover:shadow-md'
           >
@@ -69,6 +69,7 @@ export default function HomePage() {
 
           {/* Pronostics */}
           <button
+            type='button'
             onClick={() => router.push("/pronostics")}
             className='group flex flex-col items-center gap-4 rounded-xs border border-border bg-card p-8 text-center shadow-sm transition-all hover:border-primary hover:shadow-md'
           >
@@ -81,7 +82,7 @@ export default function HomePage() {
               </h2>
               <p className='mt-1 text-sm text-muted-foreground'>
                 Deviner les caractéristiques du bébé pour tenter de gagner une
-                soirée restaurant
+                soirée restaurant avec bébé et nous
               </p>
             </div>
           </button>
@@ -92,8 +93,10 @@ export default function HomePage() {
         * Un easter egg dans un site web, c’est une fonctionnalité cachée,
         volontairement dissimulée par les développeurs.
         <br />
-        Cet easter egg est un bouton invisible quelques part sur tout le site
-        qui déclenchera une animation. Bonne chance à toi !
+        Cet easter egg est un bouton invisible quelque part sur tout le site qui
+        déclenchera une animation après un click dessus.
+        <br /> Une fois trouvé envoies nous une capture d'écran et bonne chance
+        à toi !
       </small>
     </div>
   );

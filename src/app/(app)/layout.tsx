@@ -44,8 +44,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <header className='sticky top-0 z-20 border-b border-border bg-card/80 backdrop-blur'>
         <div className='mx-auto flex h-14 max-w-4xl items-center justify-between px-4'>
           <button
+            type='button'
             onClick={() => router.push("/home")}
-            className='text-xl font-semibold text-foreground text-[#a1968a] transition-colors hover:text-primary'
+            className='text-xl font-semibold text-muted-foreground hover:text-foreground transition-colors'
           >
             🍼👶🏽 Mini nous
           </button>
@@ -55,6 +56,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               {user.first_name} {user.last_name}
             </span>
             <button
+              type='button'
               onClick={handleLogout}
               className='rounded-md border border-border px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-foreground hover:text-foreground'
             >

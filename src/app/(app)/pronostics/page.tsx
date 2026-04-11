@@ -10,23 +10,37 @@ import {
 } from "@/hooks/use-pronostics";
 import { userAtom } from "@/store/auth";
 import { cn } from "@/lib/utils";
+import { TiArrowLeft } from "react-icons/ti";
+import Link from "next/link";
 
 export default function PronosticsPage() {
   const user = useAtomValue(userAtom);
-  const { data: questions, isLoading: loadingQ } = usePronosticQuestions();
-  const { data: existingAnswers, isLoading: loadingA } = useUserAnswers(
-    user!.id,
-  );
-  const upsert = useUpsertAnswers(user!.id);
   const [submitted, setSubmitted] = useState(false);
+
+  const { data: questions, isLoading: loadingQ } = usePronosticQuestions();
+
+  if (!user?.id) {
+    return (
+      <div className='flex items-center justify-center py-20'>
+        <p className='text-muted-foreground text-sm'>
+          Utilisateur introuvable.
+        </p>
+      </div>
+    );
+  }
+
+  const { data: existingAnswers, isLoading: loadingA } = useUserAnswers(
+    user.id,
+  );
+  const upsert = useUpsertAnswers(user.id);
 
   const isLoading = loadingQ || loadingA;
 
-  // Build answers map from existing data
   const answersMap: Record<string, string> = {};
-  existingAnswers?.forEach((a) => {
+
+  for (const a of existingAnswers ?? []) {
     answersMap[a.question_id] = a.answer;
-  });
+  }
 
   const form = useForm({
     defaultValues: answersMap,
@@ -36,18 +50,18 @@ export default function PronosticsPage() {
     },
   });
 
-  // Re-initialize form when answers load
   useEffect(() => {
     if (existingAnswers && questions) {
       const defaults: Record<string, string> = {};
-      questions.forEach((q) => {
+
+      for (const q of questions) {
         const ans = existingAnswers.find((a) => a.question_id === q.id);
         defaults[q.id] = ans?.answer ?? "";
-      });
+      }
+
       form.reset(defaults);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [existingAnswers, questions]);
+  }, [existingAnswers, questions, form]);
 
   if (isLoading) {
     return (
@@ -64,18 +78,29 @@ export default function PronosticsPage() {
   return (
     <div className='space-y-6'>
       <div>
-        <h1 className='text-4xl text-white font-semibold text-center text-foreground'>
+        <div className='group flex items-center gap-1'>
+          <TiArrowLeft className='text-white group-hover:text-[#926744]' />
+          <Link
+            href='/home'
+            className='text-white transition-colors duration-400 ease-in-out group-hover:text-[#926744]'
+          >
+            Retour
+          </Link>
+        </div>
+
+        <h1 className='text-foreground text-center text-4xl font-semibold text-white'>
           Ton pronostic 🔮
         </h1>
-        <p className='mt-10 text-base text-justify md:text-center text-white whitespace-pre-line'>
+
+        <p className='mt-10 whitespace-pre-line text-justify text-base text-white md:text-center'>
           {hasExistingAnswers
             ? "Vous avez déjà soumis vos pronostics. Vous pouvez les modifier ci-dessous."
-            : "Tente de deviner les caractéristiques du bébé !\n\n Chaque participant peut proposer ses prédictions (poids, taille, date de naissance, etc.).\n \n  Les réponses seront soigneusement comparées à la naissance du bébé afin d’attribuer les points.\n  Une bonne réponse rapporte 1 point, tandis qu’une mauvaise réponse n’en rapporte aucun.\n \n  La personne ayant obtenu le plus grand nombre de points remportera un restaurant ! 🥘​"}
+            : "Tente de deviner les caractéristiques du bébé !\n\nChaque participant peut proposer ses prédictions (poids, taille, date de naissance, etc.).\n\nLes réponses seront soigneusement comparées à la naissance du bébé afin d’attribuer les points.\nUne bonne réponse rapporte 1 point, tandis qu’une mauvaise réponse n’en rapporte aucun.\n\nLa personne ayant obtenu le plus grand nombre de points remportera un restaurant ! 🥘​"}
         </p>
       </div>
 
       {submitted && (
-        <div className='rounded-xl bg-secondary border border-border px-4 py-3 text-sm text-foreground'>
+        <div className='border-border bg-secondary text-foreground rounded-xl border px-4 py-3 text-sm'>
           ✅ Vos pronostics ont été enregistrés avec succès !
         </div>
       )}
@@ -91,8 +116,8 @@ export default function PronosticsPage() {
         {questions?.map((question, index) => (
           <form.Field key={question.id} name={question.id}>
             {(field) => (
-              <div className='rounded-2xl border border-border bg-card p-5 space-y-3'>
-                <p className='text-sm font-medium text-foreground'>
+              <div className='border-border bg-card space-y-3 rounded-2xl border p-5'>
+                <p className='text-foreground text-sm font-medium'>
                   <span className='text-muted-foreground mr-2'>
                     {index + 1}.
                   </span>
@@ -105,7 +130,7 @@ export default function PronosticsPage() {
                     placeholder='Votre réponse…'
                     value={field.state.value ?? ""}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    className='w-full rounded-lg border border-input bg-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring'
+                    className='border-input bg-background placeholder:text-muted-foreground focus:ring-ring w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2'
                   />
                 ) : (
                   <div className='flex flex-wrap gap-2'>
@@ -132,7 +157,7 @@ export default function PronosticsPage() {
         ))}
 
         {upsert.isError && (
-          <p className='text-sm text-destructive text-center'>
+          <p className='text-destructive text-center text-sm'>
             Une erreur s&apos;est produite. Veuillez réessayer.
           </p>
         )}
@@ -140,7 +165,7 @@ export default function PronosticsPage() {
         <button
           type='submit'
           disabled={upsert.isPending}
-          className='w-full rounded-lg bg-primary px-4 py-3 text-sm font-medium text-primary-foreground shadow-sm hover:opacity-90 disabled:opacity-50 transition-opacity'
+          className='bg-primary text-primary-foreground w-full rounded-lg px-4 py-3 text-sm font-medium shadow-sm transition-opacity hover:opacity-90 disabled:opacity-50'
         >
           {upsert.isPending
             ? "Enregistrement…"
