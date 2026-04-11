@@ -47,6 +47,12 @@ export default function PronosticsPage() {
     onSubmit: async ({ value }) => {
       await upsert.mutateAsync(value as Record<string, string>);
       setSubmitted(true);
+
+      // 👉 scroll en haut
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     },
   });
 
