@@ -27,7 +27,7 @@ export default function ListeNaissancePage() {
 
   if (isLoading) {
     return (
-      <main className='relative min-h-screen overflow-hidden'>
+      <main className='relative min-h-screen'>
         <div className='relative z-10 flex min-h-screen items-center justify-center px-4'>
           <div className='rounded-2xl bg-background/80 px-6 py-4 shadow-xl backdrop-blur-md'>
             <p className='text-sm text-muted-foreground'>
@@ -41,7 +41,7 @@ export default function ListeNaissancePage() {
 
   if (isError) {
     return (
-      <main className='relative min-h-screen overflow-hidden'>
+      <main className='relative min-h-screen'>
         <WallpaperBackground />
         <div className='relative z-10 flex min-h-screen items-center justify-center px-4'>
           <p className='rounded-2xl bg-background/80 px-6 py-4 text-center text-destructive shadow-xl backdrop-blur-md'>
@@ -54,7 +54,7 @@ export default function ListeNaissancePage() {
 
   if (!userId) {
     return (
-      <main className='relative min-h-screen overflow-hidden'>
+      <main className='relative min-h-screen'>
         <WallpaperBackground />
         <div className='relative z-10 flex min-h-screen items-center justify-center px-4'>
           <p className='rounded-2xl bg-background/80 px-6 py-4 text-center text-sm text-muted-foreground shadow-xl backdrop-blur-md'>
@@ -66,7 +66,7 @@ export default function ListeNaissancePage() {
   }
 
   return (
-    <main className='relative min-h-screen overflow-hidden'>
+    <main className='relative min-h-screen'>
       <div className='relative z-10 px-4 py-10'>
         <div className='group relative z-[100] flex items-center gap-1'>
           <TiArrowLeft className='text-white group-hover:text-[#926744]' />
@@ -81,7 +81,7 @@ export default function ListeNaissancePage() {
         <div className='mx-auto mt-6 max-w-7xl space-y-6'>
           {open && (
             <>
-              <Confetti className='z-[40]' />
+              <Confetti className='pointer-events-none z-[40]' />
 
               <section className='pointer-events-none relative z-50 flex min-h-[65px] w-full items-center justify-center rounded-xl bg-[#a1968a] px-4 py-3 text-center text-xl font-bold text-red-700 md:text-2xl'>
                 🐣🐣 BRAVO A TOI TU AS TROUVE L&apos;EASTER EGG DU SITE
@@ -125,7 +125,10 @@ export default function ListeNaissancePage() {
               Vina{" "}
               <button
                 type='button'
-                onClick={() => setOpen(!open)}
+                onClick={() => {
+                  setOpen(true);
+                  window.scrollTo(0, 0);
+                }}
                 className='cursor-default'
               >
                 &

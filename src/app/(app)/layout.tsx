@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import { userAtom } from "@/store/auth";
 import WallpaperBackground from "@/components/WallpaperBackground";
 
+import { FaRegUser } from "react-icons/fa6";
+
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useAtom(userAtom);
   const router = useRouter();
@@ -51,7 +53,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             🍼👶🏽 Mini nous
           </button>
 
-          <div className='flex items-center gap-2'>
+          <div className='flex items-center gap-4'>
             <span className='text-sm text-muted-foreground'>
               {user.first_name} {user.last_name}
             </span>
@@ -60,14 +62,14 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
               onClick={handleLogout}
               className='rounded-md border border-border px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-foreground hover:text-foreground'
             >
-              Changer d&apos;utilisateur
+              <FaRegUser className='text-muted-foreground' />
             </button>
           </div>
         </div>
       </header>
 
       {/* Content */}
-      <div className='relative z-10 mx-auto max-w-[1070px] px-6 py-16'>
+      <div className='relative z-10 mx-auto max-w-[1070px] px-6 pb-16'>
         {children}
       </div>
     </div>
