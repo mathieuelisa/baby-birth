@@ -35,18 +35,18 @@ babyBirth est un site web familial/entre amis autour d'une naissance, composé d
 
 ## Stack technique
 
-| Rôle | Outil |
-|---|---|
-| Framework | Next.js 15 (App Router) |
-| Runtime / Package manager | **Bun** (jamais npm/yarn/pnpm) |
-| Language | TypeScript strict |
+| Rôle | Outil                                                          |
+|---|----------------------------------------------------------------|
+| Framework | Next.js 16 (App Router)                                         |
+| Runtime / Package manager | **Bun** (jamais npm/yarn/pnpm)                                 |
+| Language | TypeScript strict                                              |
 | Styling | Tailwind CSS v3 + shadcn/ui (style `new-york`, base `neutral`) |
-| État global | **Jotai** (`atomWithStorage` pour la session) |
-| État serveur / cache | **TanStack Query v5** |
-| Formulaires | **TanStack Form v1** |
-| Client HTTP | **Axios** via instance `@/lib/axios` |
-| Backend / Auth / DB | **Supabase** (`@supabase/ssr`) |
-| Lint / Format | **Biome** (pas ESLint, pas Prettier) |
+| État global | **Jotai** (`atomWithStorage` pour la session)                  |
+| État serveur / cache | **TanStack Query v5**                                          |
+| Formulaires | **TanStack Form v1**                                           |
+| Client HTTP | **Axios** via instance `@/lib/axios`                           |
+| Backend / Auth / DB | **Supabase** (`@supabase/ssr`)                                 |
+| Lint / Format | **Biome** (pas ESLint, pas Prettier)                           |
 
 ---
 
