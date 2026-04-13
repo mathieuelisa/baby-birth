@@ -53,12 +53,10 @@ export default function LoginPage() {
 
       {/* Contenu au-dessus */}
       <div className='relative z-10 flex min-h-screen items-center justify-center px-4'>
-        <div className='w-full max-w-sm space-y-8 rounded-xs bg-background/80 p-6 shadow-xl backdrop-blur-md'>
+        <div className='w-full max-w-sm space-y-8 rounded-xs bg-[#e4e2de]/80 p-6 shadow-xl backdrop-blur-md'>
           <div className='text-center'>
-            <p className='mb-3 text-3xl text-muted-foreground'>
-              👶🏽 Mini nous 👶🏽
-            </p>
-            <p className='mt- mb-6 text-sm text-muted-foreground'>
+            <p className='mb-3 text-3xl text-[#9a7c66]'>👶🏽 Mini nous 👶🏽</p>
+            <p className='mt- mb-6 text-sm text-[#9a7c66]'>
               Entrez votre prénom et nom pour accéder site
             </p>
             <small>
@@ -99,10 +97,10 @@ export default function LoginPage() {
                     placeholder='ex: Marie'
                     value={field.state.value}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    className='w-full rounded-xs border border-input bg-card/90 px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring'
+                    className='w-full rounded-xs border border-[#9a7c66] bg-[#fdfcfc]/90 px-3 py-2 text-sm shadow-sm placeholder:text-[#9a7c66]focus:outline-none'
                   />
                   {field.state.meta.errors[0] && (
-                    <p className='text-xs text-destructive'>
+                    <p className='text-xs text-red-700'>
                       {field.state.meta.errors[0]}
                     </p>
                   )}
@@ -130,10 +128,10 @@ export default function LoginPage() {
                     placeholder='ex: Dupont'
                     value={field.state.value}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    className='w-full rounded-xs border border-input bg-card/90 px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring'
+                    className='w-full rounded-xs border border-[#9a7c66] bg-[#fdfcfc]/90 px-3 py-2 text-sm shadow-sm placeholder:text-[#9a7c66] focus:outline-none'
                   />
                   {field.state.meta.errors[0] && (
-                    <p className='text-xs text-destructive'>
+                    <p className='text-xs text-red-700'>
                       {field.state.meta.errors[0]}
                     </p>
                   )}
@@ -142,7 +140,7 @@ export default function LoginPage() {
             </form.Field>
 
             {login.isError && (
-              <p className='text-center text-sm text-destructive'>
+              <p className='text-center text-sm text-red-700'>
                 Une erreur s&apos;est produite. Veuillez réessayer.
               </p>
             )}
@@ -150,7 +148,7 @@ export default function LoginPage() {
             <button
               type='submit'
               disabled={login.isPending}
-              className='w-full rounded-xs bg-primary px-4 py-2.5 text-sm font-medium text-primary-foreground shadow-sm transition-opacity hover:opacity-90 disabled:opacity-50'
+              className='w-full cursor-pointer rounded-xs bg-[#9a7c66] px-4 py-2.5 text-sm font-medium text-white shadow-sm transition-opacity hover:opacity-90 disabled:opacity-50'
             >
               {login.isPending ? "Connexion…" : "Accéder à Mini nous"}
             </button>

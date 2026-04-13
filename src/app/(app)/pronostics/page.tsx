@@ -48,7 +48,6 @@ export default function PronosticsPage() {
       await upsert.mutateAsync(value as Record<string, string>);
       setSubmitted(true);
 
-      // 👉 scroll en haut
       window.scrollTo({
         top: 0,
         behavior: "smooth",
@@ -85,20 +84,20 @@ export default function PronosticsPage() {
     <div className='space-y-6'>
       <div className='pt-10'>
         <div className='group flex items-center gap-1'>
-          <TiArrowLeft className='text-white group-hover:text-[#926744]' />
+          <TiArrowLeft className='text-white transition-colors duration-300 group-hover:text-[#926744]' />
           <Link
             href='/home'
-            className='text-white transition-colors duration-400 ease-in-out group-hover:text-[#926744]'
+            className='text-white transition-colors duration-300 ease-in-out group-hover:text-[#926744]'
           >
             Retour
           </Link>
         </div>
 
-        <h1 className='text-foreground text-center text-4xl font-semibold text-white mt-8'>
+        <h1 className='mt-8 text-center text-4xl font-semibold text-white'>
           Ton pronostic 🔮
         </h1>
 
-        <p className='mt-10 whitespace-pre-line text-center text-base text-white md:text-center'>
+        <p className='mt-10 whitespace-pre-line text-center text-base text-white'>
           {hasExistingAnswers
             ? "Vous avez déjà soumis vos pronostics. Vous pouvez les modifier ci-dessous."
             : "Tente de deviner les caractéristiques du bébé !\n\nChaque participant peut proposer ses prédictions (poids, taille, date de naissance, etc.).\n\nLes réponses seront soigneusement comparées à la naissance du bébé afin d’attribuer les points.\nUne bonne réponse rapporte 1 point, tandis qu’une mauvaise réponse n’en rapporte aucun.\n\nLa personne ayant obtenu le plus grand nombre de points remportera un restaurant ! 🥘​"}
@@ -106,13 +105,13 @@ export default function PronosticsPage() {
       </div>
 
       {submitted && (
-        <div className='border-border bg-secondary text-foreground rounded-xl border px-4 py-3 text-sm'>
+        <div className='rounded-xl border border-[#d8c2af] bg-[#faf8f4] px-4 py-3 text-sm text-[#5c4432] shadow-sm'>
           ✅ Vos pronostics ont été enregistrés avec succès !
         </div>
       )}
 
       <form
-        className='space-y-4'
+        className='space-y-5'
         onSubmit={(e) => {
           e.preventDefault();
           setSubmitted(false);
@@ -122,11 +121,9 @@ export default function PronosticsPage() {
         {questions?.map((question, index) => (
           <form.Field key={question.id} name={question.id}>
             {(field) => (
-              <div className='border-border bg-card space-y-3 rounded-2xl border p-5'>
-                <p className='text-foreground text-sm font-medium'>
-                  <span className='text-muted-foreground mr-2'>
-                    {index + 1}.
-                  </span>
+              <div className='space-y-4 rounded-2xl border border-[#9b7354] bg-white p-5 shadow-sm'>
+                <p className='text-sm font-medium text-[#3f3128]'>
+                  <span className='mr-2 text-[#9b7354]'>{index + 1}.</span>
                   {question.question}
                 </p>
 
@@ -136,25 +133,34 @@ export default function PronosticsPage() {
                     placeholder='Votre réponse…'
                     value={field.state.value ?? ""}
                     onChange={(e) => field.handleChange(e.target.value)}
-                    className='border-input bg-background placeholder:text-muted-foreground focus:ring-ring w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-2'
+                    className='w-full rounded-xl border border-[#d8c2af] bg-[#faf8f4] px-3 py-2.5 text-sm text-[#3f3128] placeholder:text-[#a08a78] focus:outline-none focus:ring-2 focus:ring-[#9b7354]/30'
                   />
                 ) : (
-                  <div className='flex flex-wrap gap-2'>
-                    {question.options?.map((option) => (
-                      <button
-                        key={option}
-                        type='button'
-                        onClick={() => field.handleChange(option)}
-                        className={cn(
-                          "rounded-full border px-4 py-1.5 text-sm transition-all",
-                          field.state.value === option
-                            ? "border-primary bg-primary text-primary-foreground"
-                            : "border-border bg-background text-foreground hover:border-primary",
-                        )}
-                      >
-                        {option}
-                      </button>
-                    ))}
+                  <div className='flex flex-wrap gap-3'>
+                    {question.options?.map((option) => {
+                      const selected = field.state.value === option;
+
+                      return (
+                        <button
+                          key={option}
+                          type='button'
+                          onClick={() => field.handleChange(option)}
+                          className={cn(
+                            "inline-flex items-center rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200",
+                            "focus:outline-none focus:ring-2 focus:ring-[#9b7354]/40 focus:ring-offset-2",
+                            "shadow-sm hover:shadow-md",
+                            selected
+                              ? "scale-[1.01] border-[#9b7354] bg-[#9b7354] text-white"
+                              : "border-[#d8c2af] bg-[#faf8f4] text-[#5c4432] hover:border-[#9b7354] hover:bg-[#f5ede6]",
+                          )}
+                        >
+                          {option}
+                          {selected && (
+                            <span className='ml-2 text-white'>✓</span>
+                          )}
+                        </button>
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -163,7 +169,7 @@ export default function PronosticsPage() {
         ))}
 
         {upsert.isError && (
-          <p className='text-destructive text-center text-sm'>
+          <p className='text-center text-sm text-red-500'>
             Une erreur s&apos;est produite. Veuillez réessayer.
           </p>
         )}
@@ -171,7 +177,7 @@ export default function PronosticsPage() {
         <button
           type='submit'
           disabled={upsert.isPending}
-          className='bg-primary text-primary-foreground w-full rounded-lg px-4 py-3 text-sm font-medium shadow-sm transition-opacity hover:opacity-90 disabled:opacity-50'
+          className='w-full rounded-xl bg-[#9b7354] px-4 py-3 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:opacity-90 disabled:opacity-50'
         >
           {upsert.isPending
             ? "Enregistrement…"

@@ -43,24 +43,24 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <WallpaperBackground />
 
       {/* Header */}
-      <header className='sticky top-0 z-20 border-b border-border bg-card/80 backdrop-blur'>
+      <header className='sticky top-0 z-20 border-b border-border bg-[#ffffff]/80 backdrop-blur'>
         <div className='mx-auto flex h-14 max-w-4xl items-center justify-between px-4'>
           <button
             type='button'
             onClick={() => router.push("/home")}
-            className='text-xl font-semibold text-muted-foreground hover:text-foreground transition-colors'
+            className='text-xl font-semibold text-[#9a7c66] cursor-pointer hover:text-foreground transition-colors'
           >
             🍼👶🏽 Mini nous
           </button>
 
           <div className='flex items-center gap-4'>
-            <span className='text-sm text-muted-foreground'>
+            <span className='text-sm text-[#9a7c66]'>
               {user.first_name} {user.last_name}
             </span>
             <button
               type='button'
               onClick={handleLogout}
-              className='rounded-md border border-border px-3 py-1.5 text-xs text-muted-foreground transition-colors hover:border-foreground hover:text-foreground'
+              className='rounded-md cursor-pointer border border-border px-3 py-1.5 text-xs text-[#9a7c66] transition-colors hover:border-[#9a7c66] hover:text-[#9a7c66]'
             >
               <FaRegUser className='text-muted-foreground' />
             </button>
@@ -69,7 +69,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       </header>
 
       {/* Content */}
-      <div className='relative z-10 mx-auto max-w-[1070px] px-6 pb-16'>
+      <div className='relative z-10 mx-auto max-w-267.5 px-6 pb-16'>
         {children}
       </div>
     </div>

@@ -29,10 +29,8 @@ export default function ListeNaissancePage() {
     return (
       <main className='relative min-h-screen'>
         <div className='relative z-10 flex min-h-screen items-center justify-center px-4'>
-          <div className='rounded-2xl bg-background/80 px-6 py-4 shadow-xl backdrop-blur-md'>
-            <p className='text-sm text-muted-foreground'>
-              Chargement de la liste…
-            </p>
+          <div className='rounded-2xl bg-white/80 px-6 py-4 shadow-xl backdrop-blur-md'>
+            <p className='text-sm text-[#926744]'>Chargement de la liste…</p>
           </div>
         </div>
       </main>
@@ -44,7 +42,7 @@ export default function ListeNaissancePage() {
       <main className='relative min-h-screen'>
         <WallpaperBackground />
         <div className='relative z-10 flex min-h-screen items-center justify-center px-4'>
-          <p className='rounded-2xl bg-background/80 px-6 py-4 text-center text-destructive shadow-xl backdrop-blur-md'>
+          <p className='rounded-2xl bg-white/80 px-6 py-4 text-center text-[#926744] shadow-xl backdrop-blur-md'>
             Impossible de charger la liste. Veuillez réessayer.
           </p>
         </div>
@@ -57,7 +55,7 @@ export default function ListeNaissancePage() {
       <main className='relative min-h-screen'>
         <WallpaperBackground />
         <div className='relative z-10 flex min-h-screen items-center justify-center px-4'>
-          <p className='rounded-2xl bg-background/80 px-6 py-4 text-center text-sm text-muted-foreground shadow-xl backdrop-blur-md'>
+          <p className='rounded-2xl bg-white/80 px-6 py-4 text-center text-[#926744] shadow-xl backdrop-blur-md'>
             Utilisateur introuvable.
           </p>
         </div>
@@ -68,7 +66,7 @@ export default function ListeNaissancePage() {
   return (
     <main className='relative min-h-screen'>
       <div className='relative z-10 px-4 py-10'>
-        <div className='group relative z-[100] flex items-center gap-1'>
+        <div className='group relative z-100 flex items-center gap-1'>
           <TiArrowLeft className='text-white group-hover:text-[#926744]' />
           <Link
             href='/home'
@@ -81,15 +79,15 @@ export default function ListeNaissancePage() {
         <div className='mx-auto mt-6 max-w-7xl space-y-6'>
           {open && (
             <>
-              <Confetti className='pointer-events-none z-[40]' />
+              <Confetti className='pointer-events-none z-40' />
 
-              <section className='pointer-events-none relative z-50 flex min-h-[65px] w-full items-center justify-center rounded-xl bg-[#a1968a] px-4 py-3 text-center text-xl font-bold text-red-700 md:text-2xl'>
+              <section className='pointer-events-none relative z-50 flex min-h-16.25 w-full items-center justify-center rounded-xl bg-[#a1968a] px-4 py-3 text-center text-xl font-bold text-red-700 md:text-2xl'>
                 🐣🐣 BRAVO A TOI TU AS TROUVE L&apos;EASTER EGG DU SITE
               </section>
             </>
           )}
 
-          <div className='rounded-2xl bg-background/80 p-6 shadow-xl backdrop-blur-md'>
+          <div className='rounded-2xl bg-white/80 p-6 shadow-xl backdrop-blur-md'>
             <h1 className='mb-10 text-center text-2xl font-semibold text-[#926744]'>
               Notre liste de naissance 🎁
             </h1>
@@ -138,7 +136,7 @@ export default function ListeNaissancePage() {
           </div>
 
           {(claim.isError || unclaim.isError) && (
-            <p className='rounded-2xl border border-destructive/40 bg-destructive/10 px-4 py-3 text-sm text-destructive shadow-md backdrop-blur-md'>
+            <p className='rounded-2xl border border-red-700/40 bg-red-700/10 px-4 py-3 text-sm text-red-700 shadow-md backdrop-blur-md'>
               Une erreur s&apos;est produite. Vérifiez que la base de données
               est bien configurée.
             </p>
@@ -264,7 +262,7 @@ function ProductCard({
   return (
     <div
       className={cn(
-        "flex h-full min-h-[460px] flex-col overflow-hidden rounded-2xl border border-white/20 bg-background/80 shadow-xl backdrop-blur-md transition-all",
+        "flex h-full min-h-115 flex-col overflow-hidden rounded-2xl border border-white/20 bg-background/80 shadow-xl backdrop-blur-md transition-all",
         isClaimed && !isClaimedByMe ? "opacity-70" : "hover:shadow-2xl",
       )}
     >
@@ -288,8 +286,8 @@ function ProductCard({
             className={cn(
               "absolute right-2 top-2 rounded-full px-2.5 py-1 text-xs font-medium",
               isClaimedByMe
-                ? "bg-primary text-primary-foreground"
-                : "bg-foreground/80 text-background",
+                ? "bg-[#9a7c66] text-white"
+                : "bg-[#6e645d] text-white",
             )}
           >
             {isClaimedByMe ? "Réservé par vous" : "Réservé"}
@@ -297,23 +295,21 @@ function ProductCard({
         )}
       </div>
 
-      <div className='flex flex-1 flex-col p-4'>
-        <div className='min-h-[48px]'>
+      <div className='flex flex-1 flex-col p-4 bg-[#ebe9e7]'>
+        <div className='min-h-12'>
           <h3
             className={cn(
               "line-clamp-2 font-medium leading-snug text-foreground",
-              isClaimed &&
-                !isClaimedByMe &&
-                "line-through text-muted-foreground",
+              isClaimed && !isClaimedByMe && "line-through text-[#926744]",
             )}
           >
             {product.title}
           </h3>
         </div>
 
-        <div className='mt-1 min-h-[20px]'>
+        <div className='mt-1 min-h-5'>
           {isClaimed && claimer && !isClaimedByMe && (
-            <p className='text-xs text-muted-foreground'>
+            <p className='text-xs text-[#926744]'>
               Réservé par {claimer.first_name} {claimer.last_name}
             </p>
           )}
@@ -363,7 +359,7 @@ function ProductCard({
               href={product.link}
               target='_blank'
               rel='noopener noreferrer'
-              className='flex-1 rounded-lg border border-border px-3 py-2 text-center text-xs text-muted-foreground transition-colors hover:border-foreground hover:text-foreground'
+              className='flex-1 rounded-lg border border-[#9b7354]/30 px-3 py-2 text-center text-xs text-[#9b7354] transition-colors hover:border-black hover:text-black'
             >
               Voir le produit
             </a>
@@ -374,7 +370,7 @@ function ProductCard({
               type='button'
               onClick={onClaim}
               disabled={isClaiming}
-              className='flex-1 rounded-lg bg-primary px-3 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90 disabled:opacity-50'
+              className='flex-1 rounded-lg cursor-pointer bg-[#9b7354] px-3 py-2 text-xs font-medium text-[#ebe9e7] transition-opacity hover:opacity-90 disabled:opacity-50'
             >
               {isClaiming ? "…" : "Réserver"}
             </button>
@@ -385,7 +381,7 @@ function ProductCard({
               type='button'
               onClick={onUnclaim}
               disabled={isUnclaiming}
-              className='flex-1 rounded-lg border border-destructive px-3 py-2 text-xs font-medium text-destructive transition-colors hover:bg-destructive hover:text-destructive-foreground disabled:opacity-50'
+              className='flex-1 rounded-lg cursor-pointer border border-red-700 px-3 py-2 text-xs font-medium text-red-700 transition-colors hover:bg-red-700 hover:text-white disabled:opacity-50'
             >
               {isUnclaiming ? "…" : "Annuler"}
             </button>
