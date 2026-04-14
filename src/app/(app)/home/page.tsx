@@ -10,12 +10,12 @@ export default function HomePage() {
 
   return (
     <div>
-      <div className='space-y-8'>
+      <div className='space-y-8 mb-3'>
         <div className='text-center'>
-          <h1 className='text-3xl my-8 text-white font-grayson'>
+          <h1 className='text-8xl my-8 text-white font-baby'>
             Coucou {user?.first_name}
           </h1>
-          <p className='mt-3 mb-10 text-base md:text-center text-center text-muted-foreground text-white max-w-[1100px] mx-auto'>
+          <p className='mt-3 mb-10 text-base md:text-center text-center text-muted-foreground text-white max-w-275 mx-auto'>
             Il paraît que les plus belles histoires commencent souvent par une
             grande aventure… et quelques nuits blanches.
             <br /> La nôtre a pris un tournant magique le jour où nous avons
@@ -41,8 +41,8 @@ export default function HomePage() {
           </p>
 
           <small className='text-white'>
-            PS : Ah oui, avant que l'on oublie… un easter egg(*) se cache sur ce
-            site 👀
+            PS : Ah oui, avant que l'on oublie… un easter egg&#42; se cache sur
+            ce site 👀
             <br />
             Si vous le trouvez, vous gagnerez une surprise ! (Les devs ne sont
             pas autorisés à jouer 😄)
@@ -61,7 +61,7 @@ export default function HomePage() {
               🎁
             </span>
             <div>
-              <h2 className='text-lg font-semibold text-[#9a7c66]'>
+              <h2 className='text-3xl font-semibold text-[#9a7c66] font-girlregular'>
                 Liste de naissance
               </h2>
               <p className='mt-1 text-sm text-[#9a7c66]'>
@@ -80,7 +80,7 @@ export default function HomePage() {
               🔮
             </span>
             <div>
-              <h2 className='text-lg font-semibold text-[#9a7c66]'>
+              <h2 className='text-3xl font-semibold text-[#9a7c66] font-girlregular'>
                 Pronostics
               </h2>
               <p className='mt-1 text-sm text-[#9a7c66]'>
@@ -93,7 +93,7 @@ export default function HomePage() {
       </div>
 
       <small className='text-white'>
-        * Un easter egg dans un site web, c’est une fonctionnalité cachée,
+        &#42; Un easter egg dans un site web, c’est une fonctionnalité cachée,
         volontairement dissimulée par les développeurs.
         <br />
         Cet easter egg est un bouton invisible quelque part sur tout le site qui

@@ -48,7 +48,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           <button
             type='button'
             onClick={() => router.push("/home")}
-            className='text-xl font-semibold text-[#9a7c66] cursor-pointer hover:text-foreground transition-colors'
+            className='text-2xl font-girlregular text-[#9a7c66] cursor-pointer hover:text-foreground transition-colors'
           >
             🍼👶🏽 Mini nous
           </button>
@@ -60,9 +60,9 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
             <button
               type='button'
               onClick={handleLogout}
-              className='rounded-md cursor-pointer border border-border px-3 py-1.5 text-xs text-[#9a7c66] transition-colors hover:border-[#9a7c66] hover:text-[#9a7c66]'
+              className='rounded-md group cursor-pointer border border-[#9a7c66] px-3 py-1.5 text-xs hover:bg-[#cdb29f] text-[#9a7c66] transition-colors hover:border-white hover:text-[#9a7c66]'
             >
-              <FaRegUser className='text-muted-foreground' />
+              <FaRegUser className='group-text-[#9a7c66] group-hover:text-white' />
             </button>
           </div>
         </div>

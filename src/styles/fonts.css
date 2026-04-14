@@ -7,3 +7,27 @@
   font-display: swap;
   src: url("/fonts/Grayson.otf") format("opentype");
 }
+
+@font-face {
+  font-family: Baby;
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/Baby.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: BabyGirl;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/BabyGirl.ttf") format("opentype");
+}
+
+@font-face {
+  font-family: GirlRegular;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/GirlRegular.ttf") format("opentype");
+}

@@ -71,9 +71,7 @@ export default function PronosticsPage() {
   if (isLoading) {
     return (
       <div className='flex items-center justify-center py-20'>
-        <p className='text-muted-foreground text-sm'>
-          Chargement des questions…
-        </p>
+        <p className='text-white text-base'>Chargement des questions…</p>
       </div>
     );
   }
@@ -93,7 +91,7 @@ export default function PronosticsPage() {
           </Link>
         </div>
 
-        <h1 className='mt-8 text-center text-4xl font-semibold text-white'>
+        <h1 className='mt-8 text-center text-4xl text-[#926744] font-semibold font-girlregular'>
           Ton pronostic 🔮
         </h1>
 
@@ -146,7 +144,7 @@ export default function PronosticsPage() {
                           type='button'
                           onClick={() => field.handleChange(option)}
                           className={cn(
-                            "inline-flex items-center rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200",
+                            "inline-flex cursor-pointer items-center rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200",
                             "focus:outline-none focus:ring-2 focus:ring-[#9b7354]/40 focus:ring-offset-2",
                             "shadow-sm hover:shadow-md",
                             selected
@@ -177,7 +175,7 @@ export default function PronosticsPage() {
         <button
           type='submit'
           disabled={upsert.isPending}
-          className='w-full rounded-xl bg-[#9b7354] px-4 py-3 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:opacity-90 disabled:opacity-50'
+          className='w-full rounded-xl cursor-pointer bg-[#9b7354] px-4 py-3 text-sm font-medium text-white shadow-sm transition-all duration-200 hover:opacity-90 disabled:opacity-50'
         >
           {upsert.isPending
             ? "Enregistrement…"

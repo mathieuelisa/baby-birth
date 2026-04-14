@@ -52,12 +52,14 @@ export default function LoginPage() {
       </div>
 
       {/* Contenu au-dessus */}
-      <div className='relative z-10 flex min-h-screen items-center justify-center px-4'>
+      <div className='relative z-10 flex min-h-screen flex-col items-center justify-center px-4'>
         <div className='w-full max-w-sm space-y-8 rounded-xs bg-[#e4e2de]/80 p-6 shadow-xl backdrop-blur-md'>
           <div className='text-center'>
-            <p className='mb-3 text-3xl text-[#9a7c66]'>👶🏽 Mini nous 👶🏽</p>
+            <p className='mb-3 text-3xl text-[#9a7c66] font-girlregular'>
+              👶🏽 Mini nous 👶🏽
+            </p>
             <p className='mt- mb-6 text-sm text-[#9a7c66]'>
-              Entrez votre prénom et nom pour accéder site
+              Entrez votre prénom (ou pseudonyme) et nom pour accéder site
             </p>
             <small>
               ⚠️​ Vous devez utiliser votre prénom et votre nom{" "}
@@ -154,6 +156,10 @@ export default function LoginPage() {
             </button>
           </form>
         </div>
+
+        <small className='absolute text-white bottom-2 right-6'>
+          &#42; Votre nom sera notifié sur la liste de naissance
+        </small>
       </div>
     </main>
   );
