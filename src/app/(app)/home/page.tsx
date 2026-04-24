@@ -22,8 +22,11 @@ export default function HomePage() {
             appris qu’une toute petite personne allait venir bouleverser nos
             vies — en y mettant sans doute un peu de désordre, beaucoup d’amour,
             et une bonne dose de chaos organisé.
-            <br />
-            <div className='mx-auto my-6 h-px w-16 bg-white' />
+          </p>
+
+          <div className='mx-auto my-6 h-px w-16 bg-white' />
+
+          <p className='mt-3 mb-10 text-base md:text-center text-center text-muted-foreground text-white max-w-275 mx-auto'>
             Ce site est notre cocon numérique, un endroit rien qu’à nous (et à
             vous, les privilégiés !).
             <br /> En attendant qu'il/qu'elle pointe le bout de son nez, on vous

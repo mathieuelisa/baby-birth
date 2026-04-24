@@ -219,6 +219,8 @@ function ProductCard({
   const isClaimedByMe = product.claimed_by_user_id === currentUserId;
   const claimer = product.claimer;
 
+  console.log(product.title);
+
   const zeroToThirty = [
     "Thermomètre Vinabo",
     "Livre chanson antillais",
@@ -229,15 +231,22 @@ function ProductCard({
     "Lot 3 bodies bébé croisés manches longues",
     "Abcédaire Porsche",
     "Jouets de bain BBluv",
+    "Lot de 2 draps housse",
     "Peluche aubergine elephant",
     "Chausettes bébé Nike",
     "Sangle de jouet pour bébé",
+    "Serviette papillon babytolove (blanc)",
+    "Serviette papillon babytolove (vert)",
     "Lot de 7 bavoirs",
+    "Boîte à sucette en silicone",
+    "Jouet pour le bain",
+    "Bavoir pour Bébé en Silicone",
   ].includes(product.title);
 
   const thirtyToSixty = [
     "Gigoteuse petit bateau 0–6 mois",
     "Ensemble tenue H&M",
+    "Coffret cadeau nouveau-né",
     "Pyjama naruto",
     "Coffret repas",
   ].includes(product.title);
