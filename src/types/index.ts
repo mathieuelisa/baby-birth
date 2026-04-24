@@ -31,3 +31,12 @@ export type PronosticAnswer = {
   created_at: string;
   updated_at: string;
 };
+
+export type ProductCardProps = {
+  product: Product;
+  currentUserId: string;
+  isClaiming: boolean;
+  isUnclaiming: boolean;
+  onClaim: () => void;
+  onUnclaim: () => void;
+};

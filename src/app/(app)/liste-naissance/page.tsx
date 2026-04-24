@@ -9,7 +9,7 @@ import {
   useUnclaimProduct,
 } from "@/hooks/use-products";
 import { userAtom } from "@/store/auth";
-import type { Product } from "@/types";
+import type { Product, ProductCardProps } from "@/types";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { TiArrowLeft } from "react-icons/ti";
@@ -200,26 +200,18 @@ function WallpaperBackground() {
   );
 }
 
-function ProductCard({
-  product,
-  currentUserId,
-  isClaiming,
-  isUnclaiming,
-  onClaim,
-  onUnclaim,
-}: {
-  product: Product;
-  currentUserId: string;
-  isClaiming: boolean;
-  isUnclaiming: boolean;
-  onClaim: () => void;
-  onUnclaim: () => void;
-}) {
+function ProductCard(props: ProductCardProps) {
+  const {
+    product,
+    currentUserId,
+    isClaiming,
+    isUnclaiming,
+    onClaim,
+    onUnclaim,
+  } = props;
   const isClaimed = product.claimed_by_user_id !== null;
   const isClaimedByMe = product.claimed_by_user_id === currentUserId;
   const claimer = product.claimer;
-
-  console.log(product.title);
 
   const zeroToThirty = [
     "Thermomètre Vinabo",
