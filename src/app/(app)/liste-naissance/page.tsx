@@ -271,7 +271,7 @@ function ProductCard({
   return (
     <div
       className={cn(
-        "flex h-full min-h-115 flex-col overflow-hidden rounded-2xl border border-white/20 bg-background/80 shadow-xl backdrop-blur-md transition-all",
+        "flex h-full min-h-105 flex-col overflow-hidden rounded-2xl border border-white/20 bg-background/80 shadow-xl backdrop-blur-md transition-all",
         isClaimed && !isClaimedByMe ? "opacity-70" : "hover:shadow-2xl",
       )}
     >
