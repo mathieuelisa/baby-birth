@@ -87,8 +87,8 @@ export default function HomePage() {
                 Pronostics
               </h2>
               <p className='mt-1 text-sm text-[#9a7c66]'>
-                Deviner les caractéristiques du bébé pour tenter de gagner une
-                soirée restaurant avec bébé et nous
+                Devinez les caractéristiques du bébé et tentez de gagner une
+                soirée au restaurant avec nous et bébé.
               </p>
             </div>
           </button>
@@ -96,13 +96,13 @@ export default function HomePage() {
       </div>
 
       <small className='text-white'>
-        &#42; Un easter egg dans un site web, c’est une fonctionnalité cachée,
+        &#42; Un easter egg dans un site web est une fonctionnalité cachée,
         volontairement dissimulée par le développeur.
         <br />
-        Cet easter egg est un bouton invisible quelque part sur tout le site qui
-        déclenchera une animation après un click dessus.
-        <br /> Une fois trouvé envoies nous une capture d'écran et bonne chance
-        à toi !
+        Cet easter egg est un bouton invisible quelque part sur le site qui
+        déclenchera une animation après un clic.
+        <br />
+        Une fois trouvé, envoie-nous une capture d'écran et bonne chance !
       </small>
     </div>
   );
