@@ -97,7 +97,7 @@ export default function HomePage() {
 
       <small className='text-white'>
         &#42; Un easter egg dans un site web, c’est une fonctionnalité cachée,
-        volontairement dissimulée par les développeurs.
+        volontairement dissimulée par le développeur.
         <br />
         Cet easter egg est un bouton invisible quelque part sur tout le site qui
         déclenchera une animation après un click dessus.

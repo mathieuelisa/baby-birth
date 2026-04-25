@@ -89,7 +89,7 @@ export default function ListeNaissancePage() {
 
           <div className='rounded-2xl bg-white/80 p-6 shadow-xl backdrop-blur-md'>
             <h1 className='mb-10 text-center text-4xl font-semibold text-[#926744] font-girlregular'>
-              Notre liste de naissance 🎁
+              Notre liste de naissance
             </h1>
 
             <p className='text-justify md:text-center'>
@@ -104,6 +104,9 @@ export default function ListeNaissancePage() {
               privilégiant les meilleurs prix (pour pas que vous vous cassiez la
               tête à chercher et wallah on en prendra soin).
               <br />
+            </p>
+            <div className='mx-auto my-6 h-px w-16 bg-black' />
+            <p className='text-justify md:text-center'>
               <br /> <span className='underline'>Tuto</span> : Pour accéder au
               site marchand vers lequel prendre l&apos;objet, il vous suffit de
               cliquer sur &laquo;&nbsp;
@@ -240,7 +243,7 @@ function ProductCard(props: ProductCardProps) {
 
   const sixtyToHundred = [
     "Boite à rêves Cloud B",
-    "Parc",
+    "Parc Bébé Pliable",
     "Veilleuse Cloub B (baleine)",
   ].includes(product.title);
 
@@ -295,7 +298,7 @@ function ProductCard(props: ProductCardProps) {
         <div className='min-h-12'>
           <h3
             className={cn(
-              "line-clamp-2 font-medium leading-snug text-foreground",
+              "line-clamp-2 font-medium leading-snug text-[#7a5537]",
               isClaimed && !isClaimedByMe && "line-through text-[#926744]",
             )}
           >
@@ -313,38 +316,38 @@ function ProductCard(props: ProductCardProps) {
 
         <div className='flex-1'>
           {zeroToThirty && (
-            <div className='max-w-36 rounded-lg border border-[#926744] bg-white text-center text-xs text-[#926744]'>
+            <div className='max-w-36 rounded-lg border border-[#926744]/40 bg-white text-center text-xs text-[#926744]'>
               Entre 0 et 30€
             </div>
           )}
 
           {thirtyToSixty && (
-            <div className='max-w-36 rounded-lg border border-[#926744] bg-white text-center text-xs text-[#926744]'>
+            <div className='max-w-36 rounded-lg border border-[#926744]/40 bg-white text-center text-xs text-[#926744]'>
               Entre 30 et 60€
             </div>
           )}
 
           {sixtyToHundred && (
-            <div className='max-w-36 rounded-lg border border-[#926744] bg-white text-center text-xs text-[#926744]'>
+            <div className='max-w-36 rounded-lg border border-[#926744]/40 bg-white text-center text-xs text-[#926744]'>
               Entre 60 et 100€
             </div>
           )}
 
           {hundredToTwoHundred && (
-            <div className='max-w-36 rounded-lg border border-[#926744] bg-white text-center text-xs text-[#926744]'>
+            <div className='max-w-36 rounded-lg border border-[#926744]/40 bg-white text-center text-xs text-[#926744]'>
               Entre 100 et 200€
             </div>
           )}
 
           {moreThanTwoHundred && (
-            <div className='max-w-36 rounded-lg border border-[#926744] bg-white text-center text-xs text-[#926744]'>
+            <div className='max-w-36 rounded-lg border border-[#926744]/40 bg-white text-center text-xs text-[#926744]'>
               Plus de 200€
             </div>
           )}
 
           {moreThanOneHundredThousand && (
-            <div className='max-w-36 rounded-lg border border-red-700 bg-white text-center text-xs text-red-700'>
-              Plus de 130 000€ 🙈
+            <div className='max-w-36 rounded-lg border border-red-700/40 bg-white text-center text-xs text-red-700'>
+              Plus de 130 000€ 🙈😗
             </div>
           )}
         </div>

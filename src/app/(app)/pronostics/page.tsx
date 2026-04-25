@@ -92,7 +92,7 @@ export default function PronosticsPage() {
         </div>
 
         <h1 className='mt-8 text-center text-4xl text-[#926744] font-semibold font-girlregular'>
-          Ton pronostic 🔮
+          Ton pronostic
         </h1>
 
         <p className='mt-10 whitespace-pre-line text-center text-base text-white'>
