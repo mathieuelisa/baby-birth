@@ -9,7 +9,7 @@ import {
   useUnclaimProduct,
 } from "@/hooks/use-products";
 import { userAtom } from "@/store/auth";
-import type { Product, ProductCardProps } from "@/types";
+import type { ProductCardProps } from "@/types";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { TiArrowLeft } from "react-icons/ti";
@@ -242,6 +242,7 @@ function ProductCard(props: ProductCardProps) {
   const thirtyToSixty = [
     "Gigoteuse petit bateau 0–6 mois",
     "Coffret cadeau nouveau-né",
+    "Trousse de toilette Béaba",
     "Pyjama naruto",
     "Coffret repas",
   ].includes(product.title);
