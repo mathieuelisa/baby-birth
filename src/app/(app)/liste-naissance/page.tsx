@@ -224,7 +224,6 @@ function ProductCard(props: ProductCardProps) {
   const zeroToThirty = [
     "Thermomètre Vinabo",
     "Livre chanson antillais",
-    "Thermomètre de bain",
     "Pots de conservation en verre",
     "Egouttoir Lifewit",
     "Abcédaire Porsche",
