@@ -105,8 +105,8 @@ export default function ListeNaissancePage() {
               tête à chercher et wallah on en prendra soin).
               <br />
               <br />
-              Voici notre adresse ci vous avez besoin d'envoyer un cadeau par
-              voie postale: <br />
+              Voici notre adresse si vous avez besoin d&apos;envoyer un cadeau
+              par voie postale: <br />
               <br />
               INTHARA Vina - 1 voie de seine - 94290 Villeneuve le roi
             </p>
