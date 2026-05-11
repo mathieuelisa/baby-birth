@@ -237,6 +237,7 @@ function ProductCard(props: ProductCardProps) {
     "Kit de Goupillon Biberon",
     "Jouet pour le bain",
     "Bavoir pour Bébé en Silicone",
+    "Coussin pour matelas à langer",
   ].includes(product.title);
 
   const thirtyToSixty = [
