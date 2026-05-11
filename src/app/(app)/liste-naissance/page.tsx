@@ -226,7 +226,6 @@ function ProductCard(props: ProductCardProps) {
     "Livre chanson antillais",
     "Pots de conservation en verre",
     "Egouttoir Lifewit",
-    "Abcédaire Porsche",
     "Jouets de bain BBluv",
     "Lot de 2 draps housse",
     "Peluche aubergine elephant",
