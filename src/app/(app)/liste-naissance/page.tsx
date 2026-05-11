@@ -233,7 +233,7 @@ function ProductCard(props: ProductCardProps) {
     "Serviette papillon babytolove (blanc)",
     "Cape de bain",
     "Boîte à sucette en silicone",
-    "Kit de Goupillon Biberon",
+    "Kit de Goupillon Biberon voyage",
     "Jouet pour le bain",
     "Bavoir pour Bébé en Silicone",
     "Coussin pour matelas à langer",
