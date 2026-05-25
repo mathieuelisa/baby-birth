@@ -237,6 +237,7 @@ function ProductCard(props: ProductCardProps) {
     "Jouet pour le bain",
     "Bavoir pour Bébé en Silicone",
     "Coussin pour matelas à langer",
+    "Lot de 4 langes",
   ].includes(product.title);
 
   const thirtyToSixty = [
