@@ -246,6 +246,7 @@ function ProductCard(props: ProductCardProps) {
     "Trousse de toilette Béaba",
     "Pyjama naruto",
     "Coffret repas",
+    "Grand tapis d'éveil",
   ].includes(product.title);
 
   const sixtyToHundred = [
