@@ -238,6 +238,7 @@ function ProductCard(props: ProductCardProps) {
     "Bavoir pour Bébé en Silicone",
     "Coussin pour matelas à langer",
     "Lot de 4 langes",
+    "Bloque Porte Magnétiques",
   ].includes(product.title);
 
   const thirtyToSixty = [
