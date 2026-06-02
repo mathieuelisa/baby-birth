@@ -247,6 +247,7 @@ function ProductCard(props: ProductCardProps) {
     "Pyjama naruto",
     "Coffret repas",
     "Grand tapis d'éveil",
+    "Barrière escalier enfant",
   ].includes(product.title);
 
   const sixtyToHundred = [
