@@ -239,6 +239,7 @@ function ProductCard(props: ProductCardProps) {
     "Coussin pour matelas à langer",
     "Lot de 4 langes",
     "Bloque Porte Magnétiques",
+    "Planche Activité Montessori",
   ].includes(product.title);
 
   const thirtyToSixty = [
