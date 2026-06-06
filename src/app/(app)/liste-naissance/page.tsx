@@ -82,7 +82,8 @@ export default function ListeNaissancePage() {
               <Confetti className='pointer-events-none z-40' />
 
               <section className='pointer-events-none relative text-xl z-50 flex min-h-16.25 w-full items-center justify-center rounded-xl bg-[#a1968a] px-4 py-3 text-center font-bold text-red-700 md:text-2xl'>
-                🐣🐣 BRAVO A TOI TU AS TROUVE L&apos;EASTER EGG DU SITE
+                ​😭​ DOMMAGE, TU ES ARRIVE TROP TARD, MELANIE ELISA A DEJA
+                TROUVE L&apos;EASTER EGG DU SITE ​😭​
               </section>
             </>
           )}

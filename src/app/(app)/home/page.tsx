@@ -43,10 +43,15 @@ export default function HomePage() {
             de commencer.
           </p>
 
+          <div className='mx-auto my-6 h-px w-16 bg-white' />
+
           <h3 className='text-white uppercase'>
             🎉​🙌🏽​ L'easter egg à été trouvé par : MELANIE ELISA (bravo à elle
             et sa famille !) 🙌🏽​🎉​
           </h3>
+          <p className='text-white'>
+            Merci poour votre participation et bonne visite !
+          </p>
         </div>
 
         <div className='grid gap-4 sm:grid-cols-2'>
