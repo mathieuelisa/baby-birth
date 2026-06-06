@@ -257,7 +257,6 @@ function ProductCard(props: ProductCardProps) {
     "Boite à rêves Cloud B",
     "Parc Bébé Pliable",
     "Veilleuse Cloub B (baleine)",
-    "Matelas à langer en mousse",
   ].includes(product.title);
 
   const hundredToTwoHundred = ["Baby phone avent de Philips"].includes(
