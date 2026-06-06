@@ -43,13 +43,10 @@ export default function HomePage() {
             de commencer.
           </p>
 
-          <small className='text-white'>
-            PS : Ah oui, avant que l'on oublie… un easter egg&#42; se cache sur
-            ce site 👀
-            <br />
-            Si vous le trouvez, vous gagnerez une surprise ! (Les devs ne sont
-            pas autorisés à jouer 😄)
-          </small>
+          <h3 className='text-white uppercase'>
+            🎉​🙌🏽​ L'easter egg à été trouvé par : MELANIE ELISA (bravo à elle
+            et sa famille !) 🙌🏽​🎉​
+          </h3>
         </div>
 
         <div className='grid gap-4 sm:grid-cols-2'>
