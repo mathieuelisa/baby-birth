@@ -242,11 +242,11 @@ function ProductCard(props: ProductCardProps) {
     "Bloque Porte Magnétiques",
     "Planche Activité Montessori",
     "Moustiquaire pousette coya",
-    "Ensemble 2 pièces en maille de coton (4-6mois)",
-    "Ensemble nouveau-né Miffy (taille 62)",
     "Ensemble à carreaux (1-3mois)",
     "Habillage-pluie pour Cloud",
     "Tapis de bain anti-dérapant",
+    "Ensemble sweat all amor (3-6mois)",
+    "Ensemble nouveau-né Miffy (taille 62)",
   ].includes(product.title);
 
   const thirtyToSixty = [
