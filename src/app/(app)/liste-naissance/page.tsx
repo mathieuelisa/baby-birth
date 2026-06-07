@@ -241,6 +241,11 @@ function ProductCard(props: ProductCardProps) {
     "Lot de 4 langes",
     "Bloque Porte Magnétiques",
     "Planche Activité Montessori",
+    "Moustiquaire pousette coya",
+    "Ensemble 2 pièces en maille de coton (4-6mois)",
+    "Ensemble sweat pantalon ZARA (3-6mois)",
+    "Ensemble à carreaux (1-3mois)",
+    "Habillage-pluie pour Cloud",
   ].includes(product.title);
 
   const thirtyToSixty = [
@@ -251,6 +256,8 @@ function ProductCard(props: ProductCardProps) {
     "Coffret repas",
     "Grand tapis d'éveil",
     "Barrière escalier enfant",
+    "Réducteur de baignoire",
+    "Lot de 2 genouillères et coudières pour le bain",
   ].includes(product.title);
 
   const sixtyToHundred = [
@@ -259,9 +266,10 @@ function ProductCard(props: ProductCardProps) {
     "Veilleuse Cloub B (baleine)",
   ].includes(product.title);
 
-  const hundredToTwoHundred = ["Baby phone avent de Philips"].includes(
-    product.title,
-  );
+  const hundredToTwoHundred = [
+    "Baby phone avent de Philips",
+    "Yoto - Boite à histoire",
+  ].includes(product.title);
 
   const moreThanTwoHundred = [
     "Base T isofix cybex",
