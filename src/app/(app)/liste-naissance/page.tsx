@@ -246,6 +246,7 @@ function ProductCard(props: ProductCardProps) {
     "Ensemble sweat pantalon ZARA (3-6mois)",
     "Ensemble à carreaux (1-3mois)",
     "Habillage-pluie pour Cloud",
+    "Tapis de bain anti-dérapant",
   ].includes(product.title);
 
   const thirtyToSixty = [
