@@ -271,6 +271,7 @@ function ProductCard(props: ProductCardProps) {
   const hundredToTwoHundred = [
     "Baby phone avent de Philips",
     "Yoto - Boite à histoire",
+    "Siège-auto Pallas G i-Size",
   ].includes(product.title);
 
   const moreThanTwoHundred = [
