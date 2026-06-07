@@ -247,6 +247,7 @@ function ProductCard(props: ProductCardProps) {
     "Tapis de bain anti-dérapant",
     "Ensemble sweat all amor (3-6mois)",
     "Ensemble nouveau-né Miffy (taille 62)",
+    "Bonnet bébé Miffy blanc cassé (62/68)",
   ].includes(product.title);
 
   const thirtyToSixty = [
