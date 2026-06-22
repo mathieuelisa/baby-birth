@@ -9,7 +9,9 @@
     "lint": "biome check .",
     "lint:fix": "biome check --write .",
     "format": "biome format --write .",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "test": "vitest",
+    "test:run": "vitest run"
   },
   "dependencies": {
     "@supabase/ssr": "^0.5.2",
@@ -33,12 +35,18 @@
   "devDependencies": {
     "@biomejs/biome": "^2.4.11",
     "@tanstack/react-query-devtools": "^5.99.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^24.12.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.2",
     "autoprefixer": "^10.4.27",
+    "jsdom": "^29.1.1",
     "postcss": "^8.5.9",
     "tailwindcss": "^4.2.2",
-    "typescript": "^6.0.2"
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.9"
   }
 }

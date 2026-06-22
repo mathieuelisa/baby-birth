@@ -242,7 +242,6 @@ function ProductCard(props: ProductCardProps) {
     "Bloque Porte Magnétiques",
     "Planche Activité Montessori",
     "Moustiquaire pousette coya",
-    "Ensemble à carreaux (1-3mois)",
     "Habillage-pluie pour Cloud",
     "Tapis de bain anti-dérapant",
     "Ensemble sweat all amor (3-6mois)",
